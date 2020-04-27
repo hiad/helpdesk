@@ -57,6 +57,7 @@ const Li = styled.li`
     flex-direction: row;
     list-style-type:none;
     padding: 40px 15px;
+    
 `;
 
 const Image = styled.img`
