@@ -49,7 +49,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d develop -r https://b2ae05982e699c684f40b831f84b0b74ec455acb@github.com/hiad/helpdesk.git"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d develop -r https://${GH}@github.com/hiad/helpdesk.git"
   },
   "repository": {
     "type": "git",
