@@ -15,7 +15,7 @@ const QuestionList = ({
 }) => (
     <Container className={className}>
         <QuestionWrapper>
-            {questions.map(
+            {questions && questions.map(
                 ({ question }) => (
                     <QuestionTitle key={question.id}>
                         <LinkMenu>{question.question}</LinkMenu>
