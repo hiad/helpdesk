@@ -27,7 +27,7 @@ const Rectangle = styled.div`
     letter-spacing: 1.125px;
     font-family: 'SharpSansNo1-Medium';
     @media (min-width: 769px) {
-        display: flex;
+        display: block;
     }
 `;
 
