@@ -17,7 +17,8 @@ const Image = styled.div`
 
 const Title = styled.h1`
     color: #ffffff;
-    font-size: 43px;
+    font-family: 'SharpSansNo2Bold-Regular';
+    font-size: 30px;
     font-weight: 700;
 `;
 

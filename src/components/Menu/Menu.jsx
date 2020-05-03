@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import logo from '../../images/Logo.png';
 import search from '../../images/search.png';
 import shop from '../../images/shop.png';
-import user from '../../images/user.png';
+import user from '../../images/user.svg';
+import menu from '../../images/menu.svg';
 
 
 const Container = styled.nav`
@@ -41,14 +42,17 @@ const IconsWrapper = styled.div`
     display: none;
     @media (min-width: 769px) {
         margin-left: 1rem;
+        display: flex;
     }
 `;
 
 const Icon = styled.img`
-    display: ${({ display }) => (display === 'mobile' ? 'flex' : 'none')};
+    max-width: 25px;
+    display: ${({ displayInfo }) => (displayInfo === 'mobile' ? 'flex' : 'none')};
     margin-right: 13px;
     @media (min-width: 769px) {
         margin-left: 20px;
+        display: ${({ displayInfo }) => (displayInfo !== 'mobile' ? 'flex' : 'none')};
     }
 `;
 
@@ -76,17 +80,18 @@ const Image = styled.img`
 
 const A = styled.a`
     color: #000000;
-    font-family: "Open Sans";
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
+    font-family: 'SharpSansNo1-Medium';
 `;
 
 const Menu = ({ className }) => (
     <Container>
         <Nav className={className}>
-            <Icon display="mobile" src={user} />
+            <Icon displayInfo="mobile" src={menu} />
+            <Icon displayInfo="mobile" src={user} />
             <Image src={logo} />
             <Ul>
                 <Li>
@@ -108,12 +113,12 @@ const Menu = ({ className }) => (
                     <A href="#">SHOP BY COLOR</A>
                 </Li>
             </Ul>
-            <Icon display="mobile" src={search} />
-            <Icon display="mobile" src={shop} />
+            <Icon displayInfo="mobile" src={search} />
+            <Icon displayInfo="mobile" src={shop} />
             <IconsWrapper>
-                <Icon display="desktop" src={search} />
-                <Icon display="desktop" src={shop} />
-                <Icon display="desktop" src={user} />
+                <Icon displayInfo="desktop" src={search} />
+                <Icon displayInfo="desktop" src={shop} />
+                <Icon displayInfo="desktop" src={user} />
             </IconsWrapper>
         </Nav>
     </Container>

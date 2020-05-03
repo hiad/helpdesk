@@ -6,28 +6,27 @@ import arrow from '../../images/arrow.png';
 const Container = styled.div`
     max-width: 100%;
     margin: 0 auto;
-    border: 3px solid #000000;
-    background-color: #ffffff;
-    padding: 0  30px 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+    padding: 0 16px 0 30px;
     display: flex;
     flex-flow: column;
     height: auto;
-    @media (min-width: 769px) {
+    @media (min-width: 768px) {
         height: 254px;
     }
 `;
 
-
 const QuestionWrapper = styled.div`
     flex: 1;
+    margin: 25px 0 16px 0;
 `;
 
 const Wrapper = styled.div`
     display: ${({ isSelectable }) => (isSelectable ? 'flex' : 'none')};
     max-width: 100%;
     flex-direction: column;
-    height: 120px;
-    @media (min-width: 769px) {
+    height: 100%;
+    @media (min-width: 767px) {
         max-width: 100%;
         display: flex;
         flex-direction: column;
@@ -38,14 +37,28 @@ const Wrapper = styled.div`
 const Header = styled.div`
     max-width: 100%;
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    align-items: center;
+    border-bottom: ${({ isSelectable }) => (isSelectable ? '1px solid rgba(0,0,0,0.25)' : 'none')};
+     @media (min-width: 767px) {
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+    }
 `;
 
 const Icon = styled.img`
-    height: 11px;
-    padding: 20px;
+    width: 11px;
     transform: ${({ isSelectable }) => (!isSelectable ? 'rotate(180deg)' : 'rotate(0deg)')};
     align-self: center;
+    display: flex;;
+     @media (min-width: 767px) {
+        display:none;
+    }
+`;
+
+
+const IconTitle = styled.img`
+    width: 34px;
+    height: 34px;
+    margin-right: 16px;
 `;
 
 const Title = styled.h2`
@@ -53,12 +66,14 @@ const Title = styled.h2`
     font-size: 22px;
     font-weight: 600;
     flex: 1;
+    font-family: 'SharpSansNo1-Medium';
 `;
 
 const LinkMenu = styled(BaseLink)`
     font-size: 15px;
     font-weight: 600;
     line-height: 30px;
+    font-family: 'SharpSansNo1-Medium';
     color: #000;
     display: block;
     text-decoration: none;
@@ -73,14 +88,18 @@ const LinkAll = styled(BaseLink)`
     text-decoration: none;
     align-items: flex-end;
     justify-content: flex-end;
+    font-family: 'SharpSansNo1-Medium';
+    margin: 0 0 35px 0;
 `;
 
-const RectangleMenu = ({ className, title, questions }) => {
+const RectangleMenu = ({
+    className, title, questions, icon,
+}) => {
     const [isSelectable, setSelectable] = useState(false);
     return (
         <Container className={className}>
-            <Header>
-                <Icon />
+            <Header isSelectable={isSelectable}>
+                <IconTitle src={icon} />
                 <Title onClick={() => {
                     setSelectable(!isSelectable);
                 }}

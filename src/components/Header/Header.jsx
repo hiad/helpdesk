@@ -17,26 +17,35 @@ const Wrapper = styled.div`
 `;
 
 const Rectangle = styled.div`
+    display: none;
     width: 192px;
     text-align: center;
     color: #ffffff;
     background-color: #303030;
     padding: 20px 0;
+    font-size: 11.25px;
+    letter-spacing: 1.125px;
+    font-family: 'SharpSansNo1-Medium';
 `;
 
 const P = styled.p`
     flex: 1;
     text-align: center;
     color: #ffffff;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 11px;
+    font-family: 'SharpSansNo1-Medium';
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
 `;
 
 
 const TopMenu = ({ className }) => (
     <Container>
         <Wrapper className={className}>
-            <P>FREE SHIPPING ON ALL U.S. ORDERS OVER $60</P>
+            <P>
+                FREE SHIPPING
+                & RETURNS ON ALL U.S. ORDERS OVER $60. ORDERS SHIP WITHIN 24-48 HOURS.
+            </P>
             <Rectangle>BUY A GIFT CARD</Rectangle>
         </Wrapper>
     </Container>
