@@ -92,9 +92,13 @@ const Question = ({ location }) => {
 
     const formattedNodeInfo = data.allContentfulQuestionType.edges.filter(
         ({ node }) => node.title === title,
-    ) || [{ node: {} }];
+    );
 
-    const [{ node: filteredNode }] = formattedNodeInfo;
+    let filteredNode = {};
+    if (data) {
+        [{ node: filteredNode }] = formattedNodeInfo;
+    }
+
 
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
