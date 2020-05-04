@@ -20,7 +20,7 @@ const QuestionList = ({
 
     const handleClick = (id) => {
         if (open.includes(id)) {
-            const newArray = open.filter((item) => item === id);
+            const newArray = open.filter((item) => item !== id);
             setOpen(newArray);
         } else {
             setOpen([...open, id]);
