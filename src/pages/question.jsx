@@ -90,10 +90,11 @@ const Question = ({ location }) => {
           }                  
       `);
 
-    const [{ node: filteredNode }] = data
-    && data.allContentfulQuestionType.edges.filter(({ node }) => node.title === title);
+    const [{ node: filteredNode = {} }] = data.allContentfulQuestionType.edges.filter(
+        ({ node }) => node.title === title,
+    ) || {};
 
-    const newCategoriesData = data && data.allContentfulQuestionType.edges;
+    const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
         <Layout>
             <Container>
