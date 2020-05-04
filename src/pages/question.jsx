@@ -91,12 +91,16 @@ const Question = ({ location }) => {
       `);
 
     let filteredNode = {};
-    if (data && data.allContentfulQuestionType && data.allContentfulQuestionType.edges.node) {
-        [{ node: filteredNode }] = data.allContentfulQuestionType.edges.filter(
-            ({ node }) => node.title === title,
-        );
+    if (data && data.allContentfulQuestionType.edges) {
+        try {
+            const [{ node: filteredNodeInfo }] = data.allContentfulQuestionType.edges.filter(
+                ({ node }) => node.title === title,
+            );
+            filteredNode = filteredNodeInfo;
+        } catch (err) {
+            filteredNode = {};
+        }
     }
-
 
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
