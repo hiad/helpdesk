@@ -91,7 +91,7 @@ const Question = ({ location }) => {
       `);
 
     let filteredNode = {};
-    if (data && data.allContentfulQuestionType) {
+    if (data && data.allContentfulQuestionType && data.allContentfulQuestionType.edges.node) {
         [{ node: filteredNode }] = data.allContentfulQuestionType.edges.filter(
             ({ node }) => node.title === title,
         );
