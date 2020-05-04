@@ -21,6 +21,7 @@ const ChatBox = styled(BaseChatBox)`
 
 const Container = styled.div`
     padding-top: 73px;
+    padding-bottom: 100px;
     display: flex;
     margin: 0 auto;    
     padding: 0 20px;
@@ -28,6 +29,7 @@ const Container = styled.div`
 
     @media (min-width: 767px) {
       padding-top: 73px;
+      padding-bottom: 100px;
       display: flex;
       max-width: 1440px;
       margin: 0 auto;    
@@ -51,6 +53,7 @@ const H2 = styled.h2`
   font-size: 20px;
   font-weight: 700;
   line-height: 30px;  
+  margin-top: 0;
 `;
 
 const Question = ({ location }) => {

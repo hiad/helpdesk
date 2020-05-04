@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import Footer from '../Footer/Footer';
 import TopMenu from '../Header/Header';
 import Menu from '../Menu/Menu';
 import Banner from '../Banner/Banner';
@@ -15,7 +16,7 @@ const Layout = ({ children }) => (
             <Banner title="Help desk" />
         </header>
         <main>{children}</main>
-        <footer />
+        <Footer />
     </ThemeProvider>
 );
 
