@@ -90,9 +90,11 @@ const Question = ({ location }) => {
           }                  
       `);
 
-    const [{ node: filteredNode = {} }] = data.allContentfulQuestionType.edges.filter(
+    const formattedNodeInfo = data.allContentfulQuestionType.edges.filter(
         ({ node }) => node.title === title,
     ) || {};
+
+    const [{ node: filteredNode = {} }] = formattedNodeInfo || [];
 
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
