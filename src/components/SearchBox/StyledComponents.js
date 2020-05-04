@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import searchIcon from '../../images/searchIcon.svg';
 
 const Input = styled.input`
-    width: 285px;
+    width: 100%;
+    max-width: 285px;
     margin: 30px auto;
     height: 39px;
     border: 1px solid #707070;
@@ -17,9 +18,35 @@ const Input = styled.input`
         font-size: 10px;
         font-weight: 600;
     }
+
+    @media (min-width: 768px) {
+        max-width: 347px;
+    }
 `;
 
+const Container = styled.div`
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    ${Input}{
+        max-width: 100%;
+        margin: 0 auto;
+    }
+`;
+
+const H2 = styled.h2`
+  font-family: "SharpSansNo2Bold-Regular";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;  
+  margin-top: 0px;
+  margin-bottom: 10px;
+`;
+
+
 export {
-    // eslint-disable-next-line import/prefer-default-export
     Input,
+    Container,
+    H2,
 };

@@ -12,15 +12,25 @@ const Container = styled.nav`
     @media (min-width: 1440px) {
         flex: 1;
         margin-right: 65px;
+        max-width: 939px;
     }
 `;
 
 const QuestionWrapper = styled.div`
     width: 100%;
     color: #ffffff;
-    padding: 10px 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
     background-color: #ffffff;
+`;
+
+
+const AnswerContainer = styled.div`
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #606060;
+    padding: 30px;
 `;
 
 const QuestionTitle = styled.div`
@@ -28,7 +38,7 @@ const QuestionTitle = styled.div`
     margin: 0 30px;
     display: flex;
     border-bottom: 1px solid rgba(0,0,0,0.15);
-
+    
     &:last-child {
         border-bottom: none;
     }
@@ -49,10 +59,16 @@ const ImageIcon = styled.img`
     
 `;
 
+const Banner = styled.img`
+    width: 100%;
+`;
+
 export {
     Container,
     QuestionWrapper,
     QuestionTitle,
     LinkMenu,
     ImageIcon,
+    Banner,
+    AnswerContainer,
 };

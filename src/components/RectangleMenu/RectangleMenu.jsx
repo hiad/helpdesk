@@ -34,9 +34,10 @@ const Wrapper = styled.div`
     }
 `;
 
-const Header = styled.div`
+const Header = styled(BaseLink)`
     max-width: 100%;
     display: flex;
+    text-decoration: none;
     align-items: center;
     border-bottom: ${({ isSelectable }) => (isSelectable ? '1px solid rgba(0,0,0,0.25)' : 'none')};
      @media (min-width: 767px) {
@@ -98,7 +99,7 @@ const RectangleMenu = ({
     const [isSelectable, setSelectable] = useState(false);
     return (
         <Container className={className}>
-            <Header isSelectable={isSelectable}>
+            <Header to="/question" state={{ title }} isSelectable={isSelectable}>
                 <IconTitle src={icon} />
                 <Title onClick={() => {
                     setSelectable(!isSelectable);
@@ -115,7 +116,7 @@ const RectangleMenu = ({
                         ({ question }) => (<LinkMenu>{question.question}</LinkMenu>),
                     )}
                 </QuestionWrapper>
-                <LinkAll>View All</LinkAll>
+                <LinkAll to="/question" state={{ title }}>View All</LinkAll>
             </Wrapper>
         </Container>
     );

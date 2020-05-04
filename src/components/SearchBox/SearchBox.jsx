@@ -1,13 +1,28 @@
 import React from 'react';
 import {
     Input,
+    Container,
+    H2,
 } from './StyledComponents';
 
 
-const ContactUs = ({
+const Search = ({
     className,
 }) => (
     <Input placeholder="Search a Question" className={className} />
 );
 
-export default ContactUs;
+
+const SearchContainer = ({
+    className,
+}) => (
+    <Container className={className}>
+        <H2>Search</H2>
+        <Input placeholder="Search a Question" className={className} />
+    </Container>
+);
+
+export {
+    SearchContainer,
+};
+export default Search;
