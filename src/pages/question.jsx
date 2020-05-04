@@ -57,7 +57,7 @@ const H2 = styled.h2`
 `;
 
 const Question = ({ location }) => {
-    const { title = '' } = location && location.state;
+    const { title = '' } = location ? location.state : [];
 
     const data = useStaticQuery(graphql`{
             allContentfulQuestionType {
