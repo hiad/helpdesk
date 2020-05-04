@@ -90,13 +90,11 @@ const Question = ({ location }) => {
           }                  
       `);
 
-    const formattedNodeInfo = data.allContentfulQuestionType.edges.filter(
-        ({ node }) => node.title === title,
-    );
-
     let filteredNode = {};
-    if (data) {
-        [{ node: filteredNode }] = formattedNodeInfo;
+    if (data && data.allContentfulQuestionType) {
+        [{ node: filteredNode }] = data.allContentfulQuestionType.edges.filter(
+            ({ node }) => node.title === title,
+        );
     }
 
 
