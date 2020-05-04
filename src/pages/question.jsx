@@ -94,7 +94,7 @@ const Question = ({ location }) => {
         ({ node }) => node.title === title,
     ) || {};
 
-    const [{ node: filteredNode = {} }] = formattedNodeInfo || [{}];
+    const [{ node: filteredNode = {} }] = formattedNodeInfo || [{ node: {} }];
 
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
