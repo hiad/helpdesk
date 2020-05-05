@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Container = styled.nav`
     width: 100%;
     background-color: white;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
     @media (min-width: 768px) {
         min-width: 407px;
         flex: 1;

@@ -9,6 +9,7 @@ import 'normalize.css';
 
 const Main = styled.main`
     background-color: #fafafa;
+    padding-bottom: 100px;
 `;
 
 const Layout = ({ children }) => (

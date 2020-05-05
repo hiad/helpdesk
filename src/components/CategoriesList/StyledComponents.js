@@ -10,6 +10,7 @@ const Container = styled.div`
     display: flex;
     flex-flow: column;
     height: auto;
+    background: white;
     @media (min-width: 767px) {
         max-width: 407px;
     }

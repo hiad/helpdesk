@@ -11,7 +11,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-
+    background: white;
 `;
 
 const H2 = styled.h2`

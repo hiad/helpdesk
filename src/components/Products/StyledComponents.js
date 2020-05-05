@@ -8,6 +8,7 @@ const Container = styled.div`
     justify-content: start;
     padding: 16px 25px;
     min-height: 341px;
+    background-color: #ffffff;
 `;
 
 const Header = styled.div`

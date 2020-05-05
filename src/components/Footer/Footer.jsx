@@ -8,12 +8,18 @@ const Container = styled.div`
     padding-top: 50px;
 `;
 
+const Image = styled.img`
+    max-width: 250px;
+    text-align: center;
+    margin: 0 auto;
+`;
+
 
 const InnerContainer = styled.div`
     background: black;
     margin: 0 auto;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1024px;
 `;
 
 const Wrapper = styled.div`
@@ -23,7 +29,7 @@ const Wrapper = styled.div`
     @media (min-width: 768px) {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: start;
         justify-content: space-between;
     }
 `;
@@ -32,6 +38,8 @@ const UL = styled.ul`
     color: white;
     text-decoration: none;
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 `;
 
 const LI = styled.li`
@@ -69,12 +77,24 @@ const FollowText = styled.p`
     margin: 0;
 `;
 
+const LogoContainer = styled.div`
+    text-align: center;
+`;
+
+const H4 = styled.h4`
+    margin: 0px;
+    margin-bottom: 0.5rem;
+    text-decoration: underline;
+    color: white;
+    text-transform: uppercase;
+`;
+
 const Footer = () => (
     <Container>
         <InnerContainer>
             <Wrapper>
                 <div>
-                    <h4>Shop</h4>
+                    <H4>Shop</H4>
                     <UL className="uppercase ">
                         <LI>
                             <A href="/collections">
@@ -116,7 +136,7 @@ const Footer = () => (
                 </div>
 
                 <div>
-                    <h4>HELP</h4>
+                    <H4>HELP</H4>
                     <UL>
                         <LI>
                             <A href="/pages/faq">
@@ -156,9 +176,8 @@ const Footer = () => (
 
                     </UL>
                 </div>
-
                 <div>
-                    <h4>Brand</h4>
+                    <H4>Brand</H4>
                     <UL>
                         <LI>
                             <A href="/pages/our-story">
@@ -191,8 +210,8 @@ const Footer = () => (
 
                     </UL>
                 </div>
-                <div>
-                    <img
+                <LogoContainer>
+                    <Image
                         src="https://cdn.shopify.com/s/files/1/1114/2308/files/footer_logo_13aa35e3-8cfb-4449-8410-efef14fd967a_500x.png?v=1570360817"
                         alt="info"
                     />
@@ -202,7 +221,7 @@ const Footer = () => (
                     <FollowText>
                         new products, discounts, drink recipes and more.
                     </FollowText>
-                </div>
+                </LogoContainer>
             </Wrapper>
 
             <CopyRight>
