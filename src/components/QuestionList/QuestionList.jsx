@@ -13,7 +13,7 @@ import IconArrow from '../../images/arrowIcon.svg';
 
 const QuestionList = ({
     className,
-    questions,
+    questions = [],
     banner,
 }) => {
     const [open, setOpen] = useState([]);

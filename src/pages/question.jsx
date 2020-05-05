@@ -5,10 +5,15 @@ import Layout from '../components/Layout/Layout';
 import BaseQuestionList from '../components/QuestionList/QuestionList';
 import CategoriesList from '../components/CategoriesList/CategoriesList';
 import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
+import BaseProducts from '../components/Products/Products';
 import BaseChatBox from '../components/ChatBox/ChatBox';
 
 const QuestionList = styled(BaseQuestionList)`
   margin-right: 0;
+`;
+
+const Products = styled(BaseProducts)`
+    margin-bottom: 28px;
 `;
 
 const SearchContainer = styled(BaseSearchContainer)`
@@ -80,10 +85,27 @@ const Question = ({ location }) => {
                     }
                   }
                   banner {
+                    file {
+                      url
+                    }
+                  }
+                  product {
+                    id
+                  }
+                }
+              }
+            }
+            allContentfulProduct {
+              nodes {
+                name
+                banner {
                   file {
                     url
                   }
                 }
+                type
+                questiontype {
+                  title
                 }
               }
             }
@@ -103,10 +125,14 @@ const Question = ({ location }) => {
     }
 
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
+
+
     return (
         <Layout>
             <Container>
                 <Column>
+                    <H2>Choose other products</H2>
+                    {data && <Products products={data.allContentfulProduct.nodes} />}
                     <H2>Categories</H2>
                     <CategoriesList categories={newCategoriesData} />
                     <SearchContainer />

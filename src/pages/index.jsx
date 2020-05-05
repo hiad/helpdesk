@@ -87,6 +87,9 @@ const IndexPage = () => {
                     }
                   }
                   title
+                  product {
+                    id
+                  }
                   icon {
                     file {
                       url
@@ -109,6 +112,9 @@ const IndexPage = () => {
                 {data.allContentfulQuestionType.edges.map(({
                     node,
                 }) => {
+                    if (node.product) {
+                        return (<></>);
+                    }
                     const {
                         title,
                         id,

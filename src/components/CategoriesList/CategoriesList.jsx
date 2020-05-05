@@ -13,12 +13,16 @@ const CategoriesList = ({
 }) => (
     <Container className={className}>
         {categories.map(({ node }) => (
-            <Header to="/question" state={{ title: node.title }}>
-                <IconTitle src={node.icon.file.url} />
-                <Title>
-                    {node.title}
-                </Title>
-            </Header>
+            <>
+                {!node.product && (
+                    <Header to="/question" state={{ title: node.title }}>
+                        <IconTitle src={node.icon.file.url} />
+                        <Title>
+                            {node.title}
+                        </Title>
+                    </Header>
+                )}
+            </>
         ))}
     </Container>
 );

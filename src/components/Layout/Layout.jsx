@@ -1,11 +1,15 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Footer from '../Footer/Footer';
 import TopMenu from '../Header/Header';
 import Menu from '../Menu/Menu';
 import Banner from '../Banner/Banner';
 import GlobalStyle, { theme } from '../../theme/theme';
 import 'normalize.css';
+
+const Main = styled.main`
+    background-color: #fafafa;
+`;
 
 const Layout = ({ children }) => (
     <ThemeProvider theme={theme}>
@@ -15,7 +19,7 @@ const Layout = ({ children }) => (
             <Menu />
             <Banner title="Help desk" />
         </header>
-        <main>{children}</main>
+        <Main>{children}</Main>
         <Footer />
     </ThemeProvider>
 );
