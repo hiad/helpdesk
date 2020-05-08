@@ -19,8 +19,6 @@ const InformationField = styled.div`
     align-items: center;
     margin: 0 30px;
     display: flex;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
 `;
 
 const ImageIcon = styled.img`

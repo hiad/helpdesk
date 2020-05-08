@@ -27,17 +27,45 @@ const Header = styled(Link)`
     }
 `;
 
+
+const HeaderMobile = styled.div`
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    &:last-child {
+        border-bottom: none;
+    }
+`;
+
 const IconTitle = styled.img`
     width: 34px;
     height: 34px;
     margin-right: 16px;
 `;
 
+const Inner = styled.div`
+
+`;
+
 const Title = styled.h2`
     color: #000;
-    font-size: 22px;
+    font-size: 18px;
+    padding: 11px 0;
     font-weight: 600;
     flex: 1;
+    font-family: 'sharp_sans';
+`;
+
+
+const TitleMobile = styled(Link)`
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 10;
+    text-decoration: none;
+    padding: 15px 0;
     font-family: 'sharp_sans';
 `;
 
@@ -46,4 +74,7 @@ export {
     Header,
     IconTitle,
     Title,
+    HeaderMobile,
+    TitleMobile,
+    Inner,
 };

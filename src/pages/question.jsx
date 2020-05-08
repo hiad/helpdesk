@@ -1,9 +1,11 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Layout from '../components/Layout/Layout';
 import BaseQuestionList from '../components/QuestionList/QuestionList';
 import CategoriesList from '../components/CategoriesList/CategoriesList';
+import BaseCategoriesMobile from '../components/CategoriesList/CategoriesMobile';
 import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
 import BaseProducts from '../components/Products/Products';
 import BaseChatBox from '../components/ChatBox/ChatBox';
@@ -16,6 +18,12 @@ const Products = styled(BaseProducts)`
     margin-bottom: 28px;
 `;
 
+
+const CategoriesMobile = styled(BaseCategoriesMobile)`
+    margin-bottom: 28px;
+`;
+
+
 const SearchContainer = styled(BaseSearchContainer)`
     margin-top: 28px;
 `;
@@ -25,11 +33,11 @@ const ChatBox = styled(BaseChatBox)`
 `;
 
 const Container = styled.div`
-    padding-top: 73px;
     padding-bottom: 100px;
     display: flex;
     margin: 0 auto;    
     padding: 0 20px;
+    padding-top: 73px;
     flex-direction: column-reverse;
 
     @media (min-width: 767px) {
@@ -63,6 +71,7 @@ const H2 = styled.h2`
 
 const Question = ({ location }) => {
     const { title = '' } = location.state || {};
+    const breakpoints = useBreakpoint();
 
     const data = useStaticQuery(graphql`{
             allContentfulQuestionType {
@@ -133,12 +142,22 @@ const Question = ({ location }) => {
                 <Column>
                     <H2>Choose other products</H2>
                     {data && <Products products={data.allContentfulProduct.nodes} />}
-                    <H2>Categories</H2>
-                    <CategoriesList categories={newCategoriesData} />
+                    {!breakpoints.md && (
+                        <>
+                            <H2>Categories</H2>
+                            <CategoriesList categories={newCategoriesData} />
+                        </>
+                    )}
                     <SearchContainer />
                     <ChatBox />
                 </Column>
                 <Column>
+                    {breakpoints.md && (
+                        <>
+                            <H2>Categories</H2>
+                            <CategoriesMobile categories={newCategoriesData} />
+                        </>
+                    )}
                     <QuestionList
                         banner={filteredNode.banner && filteredNode.banner.file.url}
                         questions={filteredNode && filteredNode.questions}
