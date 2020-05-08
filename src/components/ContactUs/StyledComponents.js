@@ -19,6 +19,8 @@ const InformationField = styled.div`
     align-items: center;
     margin: 0 30px;
     display: flex;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
 `;
 
 const ImageIcon = styled.img`
@@ -26,7 +28,7 @@ const ImageIcon = styled.img`
 `;
 
 const P = styled.p`
-    font-family: 'SharpSansNo1-Medium';
+    font-family: 'sharp_sans';
     font-size: 15px;
     font-weight: 600;
     line-height: 18px;

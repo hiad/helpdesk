@@ -67,14 +67,14 @@ const Title = styled.h2`
     font-size: 22px;
     font-weight: 600;
     flex: 1;
-    font-family: 'SharpSansNo1-Medium';
+    font-family: 'sharp_sans';
 `;
 
 const LinkMenu = styled(BaseLink)`
     font-size: 15px;
     font-weight: 600;
     line-height: 30px;
-    font-family: 'SharpSansNo1-Medium';
+    font-family: 'sharp_sans';
     color: #000;
     display: block;
     text-decoration: none;
@@ -89,7 +89,7 @@ const LinkAll = styled(BaseLink)`
     text-decoration: none;
     align-items: flex-end;
     justify-content: flex-end;
-    font-family: 'SharpSansNo1-Medium';
+    font-family: 'sharp_sans';
     margin: 0 0 35px 0;
 `;
 
@@ -97,9 +97,11 @@ const RectangleMenu = ({
     className, title, questions, icon,
 }) => {
     const [isSelectable, setSelectable] = useState(false);
+    const isProductFAQ = title === 'Product FAQ';
+    const linkUrl = isProductFAQ ? '/productFAQ' : '/question';
     return (
         <Container className={className}>
-            <Header to="/question" state={{ title }} isSelectable={isSelectable}>
+            <Header to={linkUrl} state={{ title }} isSelectable={isSelectable}>
                 <IconTitle src={icon} />
                 <Title onClick={() => {
                     setSelectable(!isSelectable);

@@ -50,7 +50,7 @@ const LinkMenu = styled.p`
     text-align: left;
     color: #000;
     font-size: 15px;
-    font-family: 'SharpSansNo1-Medium';
+    font-family: 'sharp_sans';
     line-height: 64px;
     margin: 0px;
 `;

@@ -14,7 +14,7 @@ const Input = styled.input`
 
     ::placeholder {
         color: #a6a6a6;
-        font-family: 'SharpSansNo1-Medium';
+        font-family: 'sharp_sans';
         font-size: 10px;
         font-weight: 600;
     }
@@ -36,7 +36,7 @@ const Container = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-family: "SharpSansNo2Bold-Regular";
+  font-family: 'sharp_sans';
   font-size: 20px;
   font-weight: 700;
   line-height: 30px;  

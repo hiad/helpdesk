@@ -54,7 +54,7 @@ const Column = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-family: "SharpSansNo2Bold-Regular";
+  font-family: 'sharp_sans';
   font-size: 20px;
   font-weight: 700;
   line-height: 30px;  

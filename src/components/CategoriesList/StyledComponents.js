@@ -38,7 +38,7 @@ const Title = styled.h2`
     font-size: 22px;
     font-weight: 600;
     flex: 1;
-    font-family: 'SharpSansNo1-Medium';
+    font-family: 'sharp_sans';
 `;
 
 export {

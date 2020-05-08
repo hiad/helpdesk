@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../images/Logo.png';
+import logo from '../../images/menulogo.svg';
 import search from '../../images/search.png';
 import shop from '../../images/shop.png';
 import user from '../../images/user.svg';
@@ -17,13 +17,29 @@ const Nav = styled.nav`
     display: flex;
     flex-direction: row;
     align-items: center;
-    max-width: 1440px;
     margin: 0 auto;
-    height: 82px;
-    padding: 0 25px;
+    padding: 0 15px;
+    padding-top: 0.5rem;
+    height: 57.19px;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
     @media (min-width: 769px) {
-        max-height: 75px;
+        height: 75px;
+        max-width: 768px;
     }
+    @media (min-width: 1024px){
+        max-width: 1024px;
+    }
+    @media (min-width: 1140px){
+        max-width: 100%;
+    }
+    @media (min-width: 1280px){
+        max-width: 1280px;
+    }
+    @media (min-width: 1450px){
+        max-width: 1400px;
+    }
+
 `;
 
 const Ul = styled.ul`
@@ -35,12 +51,13 @@ const Ul = styled.ul`
         list-style-type:none;
         padding:0px;
         margin:0px;
+        padding-left: 45px;
     }
 `;
 
 const IconsWrapper = styled.div`
     display: none;
-    @media (min-width: 769px) {
+    @media (min-width: 1024px) {
         margin-left: 1rem;
         display: flex;
     }
@@ -48,10 +65,10 @@ const IconsWrapper = styled.div`
 
 const Icon = styled.img`
     max-width: 25px;
+    height: 25px;
     display: ${({ displayInfo }) => (displayInfo === 'mobile' ? 'flex' : 'none')};
-    margin-right: 13px;
-    @media (min-width: 769px) {
-        margin-left: 20px;
+    margin-right: 1.5rem;
+    @media (min-width: 1024px) {
         display: ${({ displayInfo }) => (displayInfo !== 'mobile' ? 'flex' : 'none')};
     }
 `;
@@ -60,7 +77,15 @@ const Li = styled.li`
     display: flex;
     flex-direction: row;
     list-style-type:none;
-    padding: 40px 15px;
+    padding-right: 3rem;
+    
+    @media (min-width: 1024px){
+        padding-right: 0.5rem;
+    }
+
+     @media (min-width: 1200px){
+        padding-right: 3rem;
+    }
 `;
 
 const Image = styled.img`
@@ -69,23 +94,45 @@ const Image = styled.img`
     @media (min-width: 375px) {
         max-width: auto;
     }
-     @media (min-width: 769px) {
-        max-width: 100%;
-    }
-    @media (min-width: 1024px) {
-        max-width: 100%;
-        margin-right: 50px;
+     @media (min-width: 1024px) {
+        max-width: 160px;
     }
 `;
 
 const A = styled.a`
     color: #000000;
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
     text-decoration: none;
-    font-family: 'SharpSansNo1-Medium';
+    text-transform: uppercase;
+    line-height: 75px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    font-family: 'sharp_sans';
 `;
+
+const Select = styled.select`
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 34px !important;
+    padding: 0 15px;
+    width: 120px;
+    background-image: url(//cdn.shopify.com/s/files/1/1114/2308/t/118/assets/icon-arrow-down.svg?v=1768537…);
+    background-repeat: no-repeat;
+    background-position: 96% 50%;
+    background-size: 2rem;
+    color: #000;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e1e1e1;
+    border-radius: 30px;
+    font-size: 12px;
+`;
+
+const Currency = styled.div`
+    margin-right: 2rem;
+`;
+
 
 const Menu = ({ className }) => (
     <Container>
@@ -116,6 +163,16 @@ const Menu = ({ className }) => (
             <Icon displayInfo="mobile" src={search} />
             <Icon displayInfo="mobile" src={shop} />
             <IconsWrapper>
+                <Currency className="currency-picker mb-8 lg:mb-0 text-center lg:text-left">
+                    <Select className="w-full lg:w-auto" name="currency">
+                        <option>AUD</option>
+                        <option>CAD</option>
+                        <option>EUR</option>
+                        <option>GBP</option>
+                        <option>NZD</option>
+                        <option selected="true">USD</option>
+                    </Select>
+                </Currency>
                 <Icon displayInfo="desktop" src={search} />
                 <Icon displayInfo="desktop" src={shop} />
                 <Icon displayInfo="desktop" src={user} />

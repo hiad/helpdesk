@@ -14,6 +14,7 @@ module.exports = {
     plugins: [
         'gatsby-plugin-styled-components',
         'gatsby-plugin-eslint',
+        'gatsby-plugin-breakpoints',
         'gatsby-plugin-react-helmet',
         {
             resolve: 'gatsby-source-filesystem',
@@ -30,8 +31,6 @@ module.exports = {
                 name: 'gatsby-starter-default',
                 short_name: 'starter',
                 start_url: '/',
-                background_color: '#663399',
-                theme_color: '#663399',
                 display: 'minimal-ui',
             },
         },

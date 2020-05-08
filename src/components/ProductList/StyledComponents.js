@@ -20,7 +20,7 @@ const ProductsWrapper = styled.div`
 `;
 
 const Title = styled.p`
-    font-family: "SharpSansNo2Bold-Regular";
+    font-family: 'sharp_sans';
     color:#000000;
     font-size: 20px;
     font-weight: 600;
@@ -31,7 +31,7 @@ const Title = styled.p`
 `;
 
 const ProductName = styled(Link)`
-    font-family: "SharpSansNo2Bold-Regular";
+    font-family: 'sharp_sans';
     color: #000000;
     font-size: 15px;
     font-weight: 700;
