@@ -114,7 +114,7 @@ const RectangleMenu = ({
             </Header>
             <Wrapper isSelectable={isSelectable}>
                 <QuestionWrapper>
-                    {questions.map(
+                    {questions.slice(0, 3).map(
                         ({ question }) => (<LinkMenu>{question.question}</LinkMenu>),
                     )}
                 </QuestionWrapper>
