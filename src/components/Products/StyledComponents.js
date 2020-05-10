@@ -55,7 +55,7 @@ const Icon = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    @media (min-width: 1440px) { 
+    @media (min-width: 1920px) { 
         width: 155px;
         height: 147px;
         margin-bottom: 0px;
