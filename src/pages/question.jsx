@@ -189,7 +189,7 @@ const Question = ({ location }) => {
                             />
                         </>
                     )}
-                    {filteredNode && (categoryShown.node.title === 'Product FAQ' || isProduct) && (
+                    {filteredNode && categoryShown && (categoryShown.node.title === 'Product FAQ' || isProduct) && (
                         <QuestionList
                             banner={filteredNode.banner && filteredNode.banner.file.url}
                             questions={filteredNode && filteredNode.questions}
