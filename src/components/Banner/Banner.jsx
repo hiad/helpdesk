@@ -1,18 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import user from '../../images/Header.png';
+import tablet from '../../images/HeaderTablet.png';
+
 
 const Image = styled.div`
     background-image: url(${(props) => props.url});
     background-size: cover;
-    height: 200px;
+    background-repeat: no-repeat;
     width: 100%;
+    height: 137px;
     margin: 0 auto;
     display:flex;
     align-items: center;
     justify-content: center;
     opacity: 1.36;
     background-color: #000;
+    @media (min-width: 768px) {
+        height: 200px;
+    }
 `;
 
 const Title = styled.h1`
@@ -25,10 +32,13 @@ const Title = styled.h1`
 const Banner = ({
     className,
     title,
-}) => (
-    <Image url={user} className={className}>
-        <Title>{title}</Title>
-    </Image>
-);
+}) => {
+    const breakpoints = useBreakpoint();
+    return (
+        <Image url={breakpoints.md ? tablet : user} className={className}>
+            <Title>{title}</Title>
+        </Image>
+    );
+};
 
 export default Banner;
