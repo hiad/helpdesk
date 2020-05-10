@@ -9,6 +9,12 @@ import BaseCategoriesMobile from '../components/CategoriesList/CategoriesMobile'
 import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
 import BaseProducts from '../components/Products/Products';
 import BaseChatBox from '../components/ChatBox/ChatBox';
+import BaseProductList from '../components/ProductList/ProductList';
+
+const ProductList = styled(BaseProductList)`
+  flex: 1;
+`;
+
 
 const QuestionList = styled(BaseQuestionList)`
   margin-right: 0;
@@ -67,7 +73,11 @@ const H2 = styled.h2`
 `;
 
 const Question = ({ location }) => {
-    const { title = '' } = location.state || {};
+    const {
+        title = '',
+        isProduct = false,
+    } = location.state || {};
+    const isProductFAQ = (title === 'Product FAQ');
     const breakpoints = useBreakpoint();
     const [categoryShown, setCategoryShown] = useState(undefined);
 
@@ -130,15 +140,18 @@ const Question = ({ location }) => {
             filteredNode = {};
         }
     }
+
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
         <Layout>
             <Container>
                 <Column>
-                    {data && (
+                    {!isProductFAQ && data && (
                         <>
                             <H2>Choose other products</H2>
-                            <Products products={data.allContentfulProduct.nodes} />
+                            <Products
+                                products={data.allContentfulProduct.nodes}
+                            />
                         </>
                     )}
                     {!breakpoints.md && (
@@ -155,20 +168,28 @@ const Question = ({ location }) => {
                         <>
                             <H2>Categories</H2>
                             <CategoriesMobile
-                                isProductFAQ={false}
                                 setCategory={setCategoryShown}
                                 categories={newCategoriesData}
                             />
                         </>
                     )}
-                    {categoryShown && breakpoints.md && (
-                        <QuestionList
-                            banner={categoryShown && categoryShown.node
-                                  && categoryShown.node.banner.file.url}
-                            questions={categoryShown && categoryShown.node.questions}
+                    {isProductFAQ && data && (
+                        <ProductList
+                            setCategory={setCategoryShown}
+                            categories={newCategoriesData}
+                            products={data.allContentfulProduct.nodes}
                         />
                     )}
-                    {!breakpoints.md && (
+                    {!isProduct && categoryShown && (categoryShown.node.title !== 'Product FAQ') && breakpoints.md && (
+                        <>
+                            <QuestionList
+                                banner={categoryShown && categoryShown.node
+                                  && categoryShown.node.banner.file.url}
+                                questions={categoryShown && categoryShown.node.questions}
+                            />
+                        </>
+                    )}
+                    {filteredNode && (categoryShown.node.title === 'Product FAQ' || isProduct) && (
                         <QuestionList
                             banner={filteredNode.banner && filteredNode.banner.file.url}
                             questions={filteredNode && filteredNode.questions}

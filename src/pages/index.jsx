@@ -9,7 +9,6 @@ import SearchBox from '../components/SearchBox/SearchBox';
 
 
 const Container = styled.div`
-    padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;    
@@ -18,7 +17,6 @@ const Container = styled.div`
     flex-direction: column;
 
     @media (min-width: 767px) {
-      padding-top: 30px;
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;

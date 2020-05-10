@@ -66,7 +66,13 @@ const Products = ({
                         <Product>
                             {banner && banner.file && (
                                 <Icon alt={name} src={banner.file.url} />)}
-                            <ProductName to="/question/" state={{ title: questionType }}>
+                            <ProductName
+                                to="/question/"
+                                state={{
+                                    title: questionType,
+                                    isProduct: true,
+                                }}
+                            >
                                 {name}
                             </ProductName>
                         </Product>

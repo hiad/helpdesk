@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 import {
-    Container,
+    Ul,
     IconTitle,
     HeaderMobile as Header,
     TitleMobile as Title,
-    Inner,
+    Li,
 } from './StyledComponents';
 
 
@@ -23,7 +23,6 @@ const CategoriesMobile = ({
         if (isOpen) {
             const info = initialCategories.filter(({ node }) => !node.product)[idx];
             setCategoryInfo([info]);
-            setCategory(info);
         } else {
             const all = initialCategories.filter(({ node }) => !node.product);
             setCategoryInfo(all);
@@ -33,7 +32,6 @@ const CategoriesMobile = ({
 
     useEffect(() => {
         const cat = initialCategories.filter(({ node }) => !node.product);
-
         if (isProductFAQ) {
             const categoryProduct = initialCategories.filter(({ node }) => node.title === 'Product FAQ');
             setCategory(categoryProduct[0]);
@@ -49,23 +47,14 @@ const CategoriesMobile = ({
     }, []);
 
     return (
-        <Container className={className}>
+        <Ul className={className}>
             {categoryInfo && categoryInfo.map(({ node }, idx) => (
-                <Inner onClick={
-                    () => {
-                        setState(idx);
-                    }
-                }
-                >
+                <Li>
                     <Header>
                         <IconTitle src={node.icon.file.url} />
                         <Title
                             onClick={() => {
-                                if (node.title === 'Product FAQ') {
-                                    setCategory({ node });
-                                    navigate('/productFAQ');
-                                    return;
-                                }
+                                setState(idx);
                                 setCategory({ node });
                                 navigate(
                                     '/question',
@@ -76,9 +65,9 @@ const CategoriesMobile = ({
                             {node.title}
                         </Title>
                     </Header>
-                </Inner>
+                </Li>
             ))}
-        </Container>
+        </Ul>
     );
 };
 

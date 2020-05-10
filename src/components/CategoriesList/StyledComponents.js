@@ -16,6 +16,21 @@ const Container = styled.div`
     }
 `;
 
+
+const Ul = styled.div`
+    max-width: 100%;
+    margin: 20 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-flow: column;
+    height: auto;
+    background: white;
+    @media (min-width: 767px) {
+        max-width: 407px;
+        padding: 0 16px 0 30px;
+    }
+`;
+
 const Header = styled(Link)`
     max-width: 100%;
     display: flex;
@@ -47,6 +62,11 @@ const IconTitle = styled.img`
 `;
 
 const Inner = styled.div`
+
+`;
+
+
+const Li = styled.div`
 
 `;
 
@@ -82,4 +102,6 @@ export {
     HeaderMobile,
     TitleMobile,
     Inner,
+    Ul,
+    Li,
 };
