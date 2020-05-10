@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import BannerURL from '../../images/productFAQ.png';
 import {
     ProductsWrapper,
@@ -9,6 +10,7 @@ import {
     Product,
     ProductName,
     BannerImage,
+    ProductNameNoLink,
 } from './StyledComponents';
 
 function compare(a, b) {
@@ -25,9 +27,12 @@ function compare(a, b) {
 const ProductList = ({
     className,
     products,
+    categories,
+    setCategory = () => {},
 }) => {
     const [shownProducts, setShownProducts] = useState([]);
     const [productTypes, setProductTypes] = useState([]);
+    const breakpoints = useBreakpoint();
 
     useEffect(() => {
         const newTypes = products.reduce(
@@ -68,9 +73,30 @@ const ProductList = ({
                                     <Product>
                                         {banner && banner.file && (
                                             <Icon alt={name} src={banner.file.url} />)}
-                                        <ProductName to="/question/" state={{ title: questionType }}>
-                                            {name}
-                                        </ProductName>
+                                        {!breakpoints.md
+                                            ? (
+                                                <ProductName to="/question/" state={{ title: questionType }}>
+                                                    {name}
+                                                </ProductName>
+                                            )
+                                            : (
+                                                <ProductNameNoLink
+                                                    onClick={
+                                                        () => {
+                                                            if (questionType) {
+                                                                const category = categories.filter(
+                                                                    ({
+                                                                        node,
+                                                                    }) => node.title === questionType,
+                                                                );
+                                                                setCategory(category[0].node);
+                                                            }
+                                                        }
+                                                    }
+                                                >
+                                                    {name}
+                                                </ProductNameNoLink>
+                                            )}
                                     </Product>
                                 );
                             })}

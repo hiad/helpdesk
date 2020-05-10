@@ -20,6 +20,10 @@
         "react"
     ],
     "rules": {
+        "max-len": [
+            "error", 
+            { "code": 160 
+        }],
         "indent": [
             "error",
             4

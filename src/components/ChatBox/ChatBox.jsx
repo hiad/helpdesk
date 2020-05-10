@@ -1,18 +1,24 @@
 import React from 'react';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import {
     Button,
     H2,
     Container,
 } from './StyledComponents';
 import chat from '../../images/chat.png';
+import chatMobile from '../../images/chatMobile.png';
+
 
 const Chat = ({
     className,
-}) => (
-    <Container className={className}>
-        <H2>Chat with us</H2>
-        <Button src={chat} />
-    </Container>
-);
+}) => {
+    const breakpoints = useBreakpoint();
+    return (
+        <Container className={className}>
+            <H2>Chat with us</H2>
+            {breakpoints.md ? <Button src={chat} /> : <Button src={chatMobile} />}
+        </Container>
+    );
+};
 
 export default Chat;

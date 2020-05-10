@@ -12,6 +12,8 @@ import {
 const CategoriesMobile = ({
     className,
     categories: initialCategories,
+    setCategory,
+    isProductFAQ,
 }) => {
     const [isOpen, setIsOpen] = useState(true);
     const [categoryInfo, setCategoryInfo] = useState([]);
@@ -21,6 +23,7 @@ const CategoriesMobile = ({
         if (isOpen) {
             const info = initialCategories.filter(({ node }) => !node.product)[idx];
             setCategoryInfo([info]);
+            setCategory(info);
         } else {
             const all = initialCategories.filter(({ node }) => !node.product);
             setCategoryInfo(all);
@@ -30,7 +33,19 @@ const CategoriesMobile = ({
 
     useEffect(() => {
         const cat = initialCategories.filter(({ node }) => !node.product);
-        setCategoryInfo([cat[0]]);
+
+        if (isProductFAQ) {
+            const categoryProduct = initialCategories.filter(({ node }) => node.title === 'Product FAQ');
+            setCategory(categoryProduct[0]);
+            if (categoryProduct[0].title === 'Product FQA') {
+                setCategory(categoryProduct[0]);
+                navigate('/productFAQ');
+            }
+            setCategoryInfo([categoryProduct[0]]);
+        } else {
+            setCategoryInfo([cat[0]]);
+            setCategory(cat[0]);
+        }
     }, []);
 
     return (
@@ -45,12 +60,17 @@ const CategoriesMobile = ({
                     <Header>
                         <IconTitle src={node.icon.file.url} />
                         <Title
-                            onClick={(event) => {
+                            onClick={() => {
+                                if (node.title === 'Product FAQ') {
+                                    setCategory({ node });
+                                    navigate('/productFAQ');
+                                    return;
+                                }
+                                setCategory({ node });
                                 navigate(
                                     '/question',
                                     { state: { title: node.title } },
                                 );
-                                event.stopPropagation();
                             }}
                         >
                             {node.title}
@@ -60,6 +80,11 @@ const CategoriesMobile = ({
             ))}
         </Container>
     );
+};
+
+CategoriesMobile.defaultProps = {
+    setCategory: () => { },
+    isProductFAQ: false,
 };
 
 export default CategoriesMobile;

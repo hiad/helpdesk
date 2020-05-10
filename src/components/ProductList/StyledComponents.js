@@ -22,27 +22,53 @@ const ProductsWrapper = styled.div`
 const Title = styled.p`
     font-family: 'sharp_sans';
     color:#000000;
-    font-size: 20px;
-    font-weight: 600;
     cursor: pointer;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    @media (min-width: 768px) { 
     line-height: 28px;
+    font-size: 20px;
+    font-weight: 600;
+    }
 `;
 
 const ProductName = styled(Link)`
     font-family: 'sharp_sans';
     color: #000000;
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 600;
     margin: 0;
     text-decoration: none;
     cursor: pointer;
     text-align: center;
+    @media (min-width: 768px) {  
+        font-size: 15px;
+        font-weight: 700;
+    }
+`;
+
+const ProductNameNoLink = styled.p`
+    font-family: 'sharp_sans';
+    color: #000000;
+    font-size: 10px;
+    font-weight: 600;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    @media (min-width: 768px) {  
+        font-size: 15px;
+        font-weight: 700;
+    }
 `;
 
 const Icon = styled.img`
-    max-width: 65px;
+    max-height: 40px;
+    @media (min-width: 768px) {  
+        max-width: 65px;
+    }
 `;
 
 const BannerImage = styled.img`
@@ -53,18 +79,27 @@ const Product = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 155px;
-    height: 147px;
+
+    width: 100px;
+    height: 88px;
     border: 1px solid #dadada;
+    align-items: center;
     background-color: #ffffff;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
+    @media (min-width: 768px) {  
+        width: 155px;
+        height: 147px;
+        margin-bottom: 28px;
+    }
+
+   
 `;
 
 export {
     BannerImage,
     Product,
     ProductName,
+    ProductNameNoLink,
     ProductsWrapper,
     Header,
     Container,

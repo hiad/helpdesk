@@ -24,7 +24,7 @@ const QuestionWrapper = styled.div`
 `;
 
 
-const AnswerContainer = styled.div`
+const AnswerContainer = styled.p`
     color: #000;
     font-size: 14px;
     font-weight: 400;
@@ -51,7 +51,7 @@ const LinkMenu = styled.p`
     color: #000;
     font-size: 15px;
     font-family: 'sharp_sans';
-    line-height: 64px;
+    padding: 20px 0;
     margin: 0px;
 `;
 

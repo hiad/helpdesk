@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 const Button = styled.img`
-    max-width: 170px;
-    margin-top: 0px;
+    width: 112px;
+    height: 37px;
+    @media (min-width: 768px) {
+        max-width: 170px;
+        margin-top: 0px;
+    }
 `;
 
 const Container = styled.div`

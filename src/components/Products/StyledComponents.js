@@ -17,11 +17,15 @@ const Header = styled.div`
     justify-content: space-between;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     margin-bottom: 18px;
+    overflow-y: scroll;
+    max-height: 250px;
 `;
 
 const ProductsWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    max-height: 250px;
+    overflow-y: scroll;
 `;
 
 const Title = styled.p`
@@ -42,9 +46,20 @@ const ProductName = styled(Link)`
     cursor: pointer;
 `;
 
-const Icon = styled.img`
-    max-width: 65px;
+const Icon = styled.div`
+    background-image: url(${({ src }) => src})};
+    width:53px;
+    height: 53px;
     margin-right: 25px;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    @media (min-width: 1440px) { 
+        width: 155px;
+        height: 147px;
+        margin-bottom: 0px;
+    }
 `;
 
 const Product = styled.div`

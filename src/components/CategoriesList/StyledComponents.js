@@ -4,15 +4,15 @@ import { Link } from 'gatsby';
 
 const Container = styled.div`
     max-width: 100%;
-    margin: 0 auto;
+    margin: 20 auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
-    padding: 0 16px 0 30px;
     display: flex;
     flex-flow: column;
     height: auto;
     background: white;
     @media (min-width: 767px) {
         max-width: 407px;
+        padding: 0 16px 0 30px;
     }
 `;
 
@@ -43,6 +43,7 @@ const IconTitle = styled.img`
     width: 34px;
     height: 34px;
     margin-right: 16px;
+    margin-left: 16px;
 `;
 
 const Inner = styled.div`
@@ -56,10 +57,14 @@ const Title = styled.h2`
     font-weight: 600;
     flex: 1;
     font-family: 'sharp_sans';
+
+    &:hover {
+        text-decoration: underline;
+    }
 `;
 
 
-const TitleMobile = styled(Link)`
+const TitleMobile = styled.div`
     color: #000;
     font-size: 18px;
     font-weight: 600;

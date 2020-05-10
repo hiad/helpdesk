@@ -15,8 +15,8 @@ const CategoriesList = ({
         {categories.map(({ node }) => (
             <>
                 {!node.product && (
-                    <Header to="/question" state={{ title: node.title }}>
-                        <IconTitle src={node.icon.file.url} />
+                    <Header to={(node.title === 'Product FAQ') ? '/productFAQ' : '/question'} state={{ title: node.title }}>
+                        {node.icon && <IconTitle src={node.icon.file.url} />}
                         <Title>
                             {node.title}
                         </Title>

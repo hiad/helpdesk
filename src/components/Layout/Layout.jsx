@@ -11,7 +11,10 @@ import 'normalize.css';
 
 const Main = styled.main`
     background-color: #fafafa;
-    padding-bottom: 100px;
+    padding: 20px 0;
+    @media (min-width: 768px) { 
+        padding: 100px 0;
+    }
 `;
 
 const Layout = ({ children }) => (

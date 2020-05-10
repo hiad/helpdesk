@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
@@ -33,16 +33,13 @@ const ChatBox = styled(BaseChatBox)`
 `;
 
 const Container = styled.div`
-    padding-bottom: 100px;
     display: flex;
     margin: 0 auto;    
     padding: 0 20px;
-    padding-top: 73px;
+    padding-top: 0;
     flex-direction: column-reverse;
 
     @media (min-width: 767px) {
-      padding-top: 73px;
-      padding-bottom: 100px;
       display: flex;
       max-width: 1440px;
       margin: 0 auto;    
@@ -72,6 +69,7 @@ const H2 = styled.h2`
 const Question = ({ location }) => {
     const { title = '' } = location.state || {};
     const breakpoints = useBreakpoint();
+    const [categoryShown, setCategoryShown] = useState(undefined);
 
     const data = useStaticQuery(graphql`{
             allContentfulQuestionType {
@@ -132,16 +130,17 @@ const Question = ({ location }) => {
             filteredNode = {};
         }
     }
-
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
-
-
     return (
         <Layout>
             <Container>
                 <Column>
-                    <H2>Choose other products</H2>
-                    {data && <Products products={data.allContentfulProduct.nodes} />}
+                    {data && (
+                        <>
+                            <H2>Choose other products</H2>
+                            <Products products={data.allContentfulProduct.nodes} />
+                        </>
+                    )}
                     {!breakpoints.md && (
                         <>
                             <H2>Categories</H2>
@@ -155,13 +154,26 @@ const Question = ({ location }) => {
                     {breakpoints.md && (
                         <>
                             <H2>Categories</H2>
-                            <CategoriesMobile categories={newCategoriesData} />
+                            <CategoriesMobile
+                                isProductFAQ={false}
+                                setCategory={setCategoryShown}
+                                categories={newCategoriesData}
+                            />
                         </>
                     )}
-                    <QuestionList
-                        banner={filteredNode.banner && filteredNode.banner.file.url}
-                        questions={filteredNode && filteredNode.questions}
-                    />
+                    {categoryShown && breakpoints.md && (
+                        <QuestionList
+                            banner={categoryShown && categoryShown.node
+                                  && categoryShown.node.banner.file.url}
+                            questions={categoryShown && categoryShown.node.questions}
+                        />
+                    )}
+                    {!breakpoints.md && (
+                        <QuestionList
+                            banner={filteredNode.banner && filteredNode.banner.file.url}
+                            questions={filteredNode && filteredNode.questions}
+                        />
+                    )}
                 </Column>
             </Container>
         </Layout>
