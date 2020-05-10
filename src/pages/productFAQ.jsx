@@ -32,16 +32,12 @@ const ChatBox = styled(BaseChatBox)`
 `;
 
 const Container = styled.div`
-    padding-top: 73px;
-    padding-bottom: 100px;
     display: flex;
     margin: 0 auto;    
     padding: 0 20px;
     flex-direction: column-reverse;
 
     @media (min-width: 767px) {
-      padding-top: 73px;
-      padding-bottom: 100px;
       display: flex;
       max-width: 1440px;
       margin: 0 auto;    
