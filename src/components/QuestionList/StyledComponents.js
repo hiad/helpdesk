@@ -38,7 +38,7 @@ const QuestionTitle = styled.div`
     margin: 0 30px;
     display: flex;
     border-bottom: 1px solid rgba(0,0,0,0.15);
-    
+    cursor: pointer;
     &:last-child {
         border-bottom: none;
     }
