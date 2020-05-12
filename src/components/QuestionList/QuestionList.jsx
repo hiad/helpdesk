@@ -15,6 +15,7 @@ const QuestionList = ({
     className,
     questions = [],
     banner,
+    isSearching = false,
 }) => {
     const [open, setOpen] = useState([]);
 
@@ -27,7 +28,7 @@ const QuestionList = ({
         }
     };
     return (
-        <Container className={className}>
+        <Container isSearching={isSearching} className={className}>
             <QuestionWrapper>
                 {banner && <Banner src={banner} alt="banner" />}
                 {questions && questions.map(

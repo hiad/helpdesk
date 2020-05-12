@@ -8,11 +8,13 @@ const Container = styled.nav`
     @media (min-width: 768px) {
         min-width: 407px;
         flex: 1;
+        max-width: ${({ isSearching }) => (isSearching && '100%')};
     }
     @media (min-width: 1440px) {
         flex: 1;
         margin-right: 65px;
         max-width: 939px;
+        max-width: ${({ isSearching }) => (isSearching && '100%')};
     }
 `;
 

@@ -120,8 +120,10 @@ const IndexPage = () => {
         <Layout>
             <Container>
                 {data && <SearchBox setQuestionsList={setQuestionsList} questions={data.allContentfulQuestions.nodes} />}
+            </Container>
+            <Container>
                 {questionList && (
-                    <QuestionList questions={questionList} />
+                    <QuestionList isSearching questions={questionList} />
                 )}
             </Container>
             <Container>
