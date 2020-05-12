@@ -4,7 +4,8 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import styled from 'styled-components';
 import Layout from '../components/Layout/Layout';
 import BaseQuestionList from '../components/QuestionList/QuestionList';
-import CategoriesList from '../components/CategoriesList/CategoriesList';
+import BaseProducts from '../components/Products/Products';
+import BaseCategoriesList from '../components/CategoriesList/CategoriesList';
 import BaseCategoriesMobile from '../components/CategoriesList/CategoriesMobile';
 import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
 import BaseChatBox from '../components/ChatBox/ChatBox';
@@ -14,8 +15,15 @@ const QuestionList = styled(BaseQuestionList)`
   margin-right: 0;
 `;
 
-
 const CategoriesMobile = styled(BaseCategoriesMobile)`
+    margin-bottom: 28px;
+`;
+
+const Products = styled(BaseProducts)`
+    margin-bottom: 28px;
+`;
+
+const CategoriesList = styled(BaseCategoriesList)`
     margin-bottom: 28px;
 `;
 
@@ -62,7 +70,7 @@ const H2 = styled.h2`
   margin-top: 0;
 `;
 
-const Question = ({ location }) => {
+const ProductInner = ({ location }) => {
     const {
         title = '',
     } = location.state || {};
@@ -141,11 +149,20 @@ const Question = ({ location }) => {
             filteredNode = {};
         }
     }
+
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
         <Layout>
             <Container>
                 <Column>
+                    {data && (
+                        <>
+                            <H2>Choose other products</H2>
+                            <Products
+                                products={data.allContentfulProduct.nodes}
+                            />
+                        </>
+                    )}
                     {!breakpoints.sm && (
                         <>
                             <H2>Categories</H2>
@@ -158,6 +175,7 @@ const Question = ({ location }) => {
                 <Column>
                     {breakpoints.sm && (
                         <CategoriesMobile
+                            isProductFAQ
                             categories={newCategoriesData}
                         />
                     )}
@@ -172,4 +190,4 @@ const Question = ({ location }) => {
         </Layout>
     );
 };
-export default Question;
+export default ProductInner;

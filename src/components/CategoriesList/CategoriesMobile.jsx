@@ -11,9 +11,8 @@ import {
 
 const CategoriesMobile = ({
     className,
-    categories: initialCategories,
-    setCategory,
     isProductFAQ,
+    categories: initialCategories,
 }) => {
     const [isOpen, setIsOpen] = useState(true);
     const [categoryInfo, setCategoryInfo] = useState([]);
@@ -31,49 +30,38 @@ const CategoriesMobile = ({
     };
 
     useEffect(() => {
-        const cat = initialCategories.filter(({ node }) => !node.product);
+        let cat = initialCategories.filter(({ node }) => !node.product);
         if (isProductFAQ) {
-            const categoryProduct = initialCategories.filter(({ node }) => node.title === 'Product FAQ');
-            setCategory(categoryProduct[0]);
-            if (categoryProduct[0].title === 'Product FQA') {
-                setCategory(categoryProduct[0]);
-                navigate('/productFAQ');
-            }
-            setCategoryInfo([categoryProduct[0]]);
-        } else {
-            setCategoryInfo([cat[0]]);
-            setCategory(cat[0]);
+            cat = initialCategories.filter(({ node }) => node.title === 'Product FAQ');
         }
+        setCategoryInfo([cat[0]]);
     }, []);
 
     return (
         <Ul className={className}>
-            {categoryInfo && categoryInfo.map(({ node }, idx) => (
-                <Li>
-                    <Header>
-                        <IconTitle src={node.icon.file.url} />
-                        <Title
-                            onClick={() => {
-                                setState(idx);
-                                setCategory({ node });
-                                navigate(
-                                    '/question',
-                                    { state: { title: node.title } },
-                                );
-                            }}
-                        >
-                            {node.title}
-                        </Title>
-                    </Header>
-                </Li>
-            ))}
+            {categoryInfo && categoryInfo.map(({ node }, idx) => {
+                const urlValidation = (node.title === 'Product FAQ') ? '/productFAQ' : '/question';
+                return (
+                    <Li>
+                        <Header>
+                            <IconTitle src={node.icon.file.url} />
+                            <Title
+                                onClick={() => {
+                                    setState(idx);
+                                    navigate(
+                                        urlValidation,
+                                        { state: { title: node.title } },
+                                    );
+                                }}
+                            >
+                                {node.title}
+                            </Title>
+                        </Header>
+                    </Li>
+                );
+            })}
         </Ul>
     );
-};
-
-CategoriesMobile.defaultProps = {
-    setCategory: () => { },
-    isProductFAQ: false,
 };
 
 export default CategoriesMobile;

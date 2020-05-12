@@ -33,7 +33,7 @@ const InnerContainer = styled.div`
         max-width: 1280px;
     }
     @media (min-width: 1450px){
-        max-width: 1400px;
+        max-width: 1370px;
     }
 `;
 
@@ -107,8 +107,9 @@ const LogoContainer = styled.div`
 `;
 
 const H4 = styled.h4`
-    margin: 2rem 0;
-    
+    margin: 0 0 2rem 0;
+    font-family: "sharp_sans";
+    font-size: 14.6px;
     text-decoration: underline;
     color: white;
     text-transform: uppercase;

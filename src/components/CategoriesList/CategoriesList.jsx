@@ -12,18 +12,21 @@ const CategoriesList = ({
     categories,
 }) => (
     <Container className={className}>
-        {categories.map(({ node }) => (
-            <>
-                {!node.product && (
-                    <Header to="/question" state={{ title: node.title }}>
-                        {node.icon && <IconTitle src={node.icon.file.url} />}
-                        <Title>
-                            {node.title}
-                        </Title>
-                    </Header>
-                )}
-            </>
-        ))}
+        {categories.map(({ node }) => {
+            const urlValidation = (node.title === 'Product FAQ') ? '/productFAQ' : '/question';
+            return (
+                <>
+                    {!node.product && (
+                        <Header to={urlValidation} state={{ title: node.title }}>
+                            {node.icon && <IconTitle src={node.icon.file.url} />}
+                            <Title>
+                                {node.title}
+                            </Title>
+                        </Header>
+                    )}
+                </>
+            );
+        })}
     </Container>
 );
 

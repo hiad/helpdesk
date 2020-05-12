@@ -31,21 +31,32 @@ const QuestionList = ({
             <QuestionWrapper>
                 {banner && <Banner src={banner} alt="banner" />}
                 {questions && questions.map(
-                    ({ question, answer }) => (
+                    ({ question, answer, typeQuestion }) => (
                         <>
                             <QuestionTitle
                                 onClick={() => handleClick(question.id)}
                                 key={question.id}
                             >
-                                <LinkMenu>{question.question}</LinkMenu>
+                                {typeQuestion && (
+                                    <LinkMenu>
+                                        {typeQuestion.title}
+                                        {' '}
+                                        -
+                                        {' '}
+                                        {question.question}
+                                    </LinkMenu>
+                                )}
+                                {!typeQuestion && (
+                                    <LinkMenu>
+                                        {question.question}
+                                    </LinkMenu>
+                                )}
                                 <ImageIcon src={IconArrow} alt="arrow" />
                             </QuestionTitle>
+
                             {
-                                open.includes(question.id) && (
-                                    <AnswerContainer>
-                                        { answer && answer.answer}
-                                    </AnswerContainer>
-                                )
+                                open.includes(question.id) && answer
+                                && (<AnswerContainer dangerouslySetInnerHTML={{ __html: answer.answer }} />)
                             }
                         </>
                     ),

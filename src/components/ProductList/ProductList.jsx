@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { navigate } from 'gatsby';
 import BannerURL from '../../images/productFAQ.png';
 import {
     ProductsWrapper,
@@ -52,8 +53,8 @@ const ProductList = ({
         <Container className={className}>
             <BannerImage src={BannerURL} alt="BannerURL" />
             <Header>
-                {productTypes.map((type) => (
-                    <ProductsWrapper>
+                {productTypes.map((type, index) => (
+                    <ProductsWrapper moreWidth={index === 1}>
                         <Title>
                             {type}
                         </Title>
@@ -67,15 +68,31 @@ const ProductList = ({
                             }) => {
                                 const questionType = questiontype ? questiontype[0].title : '';
                                 return (
-                                    <Product>
+                                    <Product
+                                        onClick={() => {
+                                            navigate(
+                                                '/productInner/',
+                                                { state: { title: questionType } },
+                                            );
+                                        }}
+                                    >
                                         {banner && banner.file && (
-                                            <Icon alt={name} src={banner.file.url} />)}
+                                            <Icon
+                                                onClick={() => {
+                                                    navigate(
+                                                        '/productInner/',
+                                                        { state: { title: questionType } },
+                                                    );
+                                                }}
+                                                alt={name}
+                                                src={banner.file.url}
+                                            />
+                                        )}
                                         <ProductName
-                                            to="/question/"
+                                            to="/productInner/"
                                             state={
                                                 {
                                                     title: questionType,
-                                                    isProduct: true,
                                                 }
                                             }
                                         >

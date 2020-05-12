@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useState } from 'react';
+import QuestionList from '../QuestionList/QuestionList';
 import {
     Input,
     Container,
@@ -8,19 +10,57 @@ import {
 
 const Search = ({
     className,
-}) => (
-    <Input placeholder="Search a Question" className={className} />
-);
+    questions,
+    setQuestionsList,
+}) => {
+    const handleFilter = (value) => {
+        const loweCaserValue = value.toLowerCase();
+        const filteredQuestions = questions.filter(
+            ({ question, answer, typeQuestion }) => (
+                question.question.toLowerCase().includes(loweCaserValue)
+                || answer.answer.toLowerCase().includes(loweCaserValue)
+                || typeQuestion.title.toLowerCase().includes(loweCaserValue)
+            ),
+        );
+        setQuestionsList(filteredQuestions);
+    };
+    return (
+        <Input
+            className={className}
+            placeholder="Search a Question"
+            onChange={(e) => {
+                const { value } = e.target;
+                if (value.length === 0) {
+                    setQuestionsList([]);
+                } else {
+                    handleFilter(value);
+                }
+            }}
+        />
+    );
+};
 
 
 const SearchContainer = ({
     className,
-}) => (
-    <Container className={className}>
-        <H2>Search</H2>
-        <Input placeholder="Search a Question" className={className} />
-    </Container>
-);
+    questions,
+}) => {
+    const [questionList, setQuestionsList] = useState([]);
+    return (
+        <Container className={className}>
+            <H2>Search</H2>
+            <Search
+                setQuestionsList={setQuestionsList}
+                questions={questions}
+                placeholder="Search a Question"
+                className={className}
+            />
+            {questionList && (
+                <QuestionList questions={questionList} />
+            )}
+        </Container>
+    );
+};
 
 export {
     SearchContainer,

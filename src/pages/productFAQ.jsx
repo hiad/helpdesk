@@ -1,19 +1,17 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import styled from 'styled-components';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Layout from '../components/Layout/Layout';
-import BaseQuestionList from '../components/QuestionList/QuestionList';
 import CategoriesList from '../components/CategoriesList/CategoriesList';
 import BaseCategoriesMobile from '../components/CategoriesList/CategoriesMobile';
 import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
 import BaseChatBox from '../components/ChatBox/ChatBox';
+import BaseProductList from '../components/ProductList/ProductList';
 
-
-const QuestionList = styled(BaseQuestionList)`
-  margin-right: 0;
+const ProductList = styled(BaseProductList)`
+  flex: 1;
 `;
-
 
 const CategoriesMobile = styled(BaseCategoriesMobile)`
     margin-bottom: 28px;
@@ -62,10 +60,7 @@ const H2 = styled.h2`
   margin-top: 0;
 `;
 
-const Question = ({ location }) => {
-    const {
-        title = '',
-    } = location.state || {};
+const ProductFQA = () => {
     const breakpoints = useBreakpoint();
 
     const data = useStaticQuery(graphql`{
@@ -130,17 +125,6 @@ const Question = ({ location }) => {
           }                  
       `);
 
-    let filteredNode = {};
-    if (data && data.allContentfulQuestionType.edges) {
-        try {
-            const [{ node: filteredNodeInfo }] = data.allContentfulQuestionType.edges.filter(
-                ({ node }) => node.title === title,
-            );
-            filteredNode = filteredNodeInfo;
-        } catch (err) {
-            filteredNode = {};
-        }
-    }
     const newCategoriesData = data.allContentfulQuestionType.edges || {};
     return (
         <Layout>
@@ -159,12 +143,13 @@ const Question = ({ location }) => {
                     {breakpoints.sm && (
                         <CategoriesMobile
                             categories={newCategoriesData}
+                            isProductFAQ
                         />
                     )}
-                    {filteredNode && (
-                        <QuestionList
-                            banner={filteredNode.banner && filteredNode.banner.file.url}
-                            questions={filteredNode && filteredNode.questions}
+                    {data && (
+                        <ProductList
+                            categories={newCategoriesData}
+                            products={data.allContentfulProduct.nodes}
                         />
                     )}
                 </Column>
@@ -172,4 +157,4 @@ const Question = ({ location }) => {
         </Layout>
     );
 };
-export default Question;
+export default ProductFQA;

@@ -97,9 +97,10 @@ const RectangleMenu = ({
     className, title, questions, icon,
 }) => {
     const [isSelectable, setSelectable] = useState(false);
+    const isProductFAQ = title === 'Product FAQ' ? '/productFAQ' : '/question';
     return (
         <Container className={className}>
-            <Header to="/question" state={{ title }} isSelectable={isSelectable}>
+            <Header to={isProductFAQ} state={{ title }} isSelectable={isSelectable}>
                 <IconTitle src={icon} />
                 <Title onClick={() => {
                     setSelectable(!isSelectable);

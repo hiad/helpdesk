@@ -1,4 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 import {
     ProductsWrapper,
     Container,
@@ -60,14 +62,32 @@ const Products = ({
                 ))}
             </Header>
             <ProductsWrapper>
-                {shownProducts.map(({ name, banner, questiontype }) => {
+                {shownProducts.map(({ name, banner, questiontype }, indexKey) => {
                     const questionType = questiontype ? questiontype[0].title : '';
                     return (
-                        <Product>
+                        <Product
+                            key={(indexKey + 1)}
+                            onClick={() => {
+                                navigate(
+                                    '/productInner/',
+                                    { state: { title: questionType } },
+                                );
+                            }}
+                        >
                             {banner && banner.file && (
-                                <Icon alt={name} src={banner.file.url} />)}
+                                <Icon
+                                    onClick={() => {
+                                        navigate(
+                                            '/productInner/',
+                                            { state: { title: questionType } },
+                                        );
+                                    }}
+                                    alt={name}
+                                    src={banner.file.url}
+                                />
+                            )}
                             <ProductName
-                                to="/question/"
+                                to="/productInner/"
                                 state={{
                                     title: questionType,
                                     isProduct: true,

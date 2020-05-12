@@ -16,7 +16,12 @@ const Header = styled.div`
 
 const ProductsWrapper = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: ${({ moreWidth }) => (moreWidth ? 'row' : ' column')};
+    flex: ${({ moreWidth }) => (moreWidth && '2')};
+    flex-flow: ${({ moreWidth }) => (moreWidth && 'wrap')};
+    align-content: ${({ moreWidth }) => (moreWidth && 'baseline')};
+    max-width: ${({ moreWidth }) => (moreWidth && '40%')};
+    justify-content: ${({ moreWidth }) => (moreWidth && 'center')};
 `;
 
 const Title = styled.p`
@@ -28,9 +33,10 @@ const Title = styled.p`
     font-size: 14px;
     font-weight: 600;
     @media (min-width: 768px) { 
-    line-height: 28px;
-    font-size: 20px;
-    font-weight: 600;
+        line-height: 28px;
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
     }
 `;
 
@@ -90,7 +96,7 @@ const Product = styled.div`
     @media (min-width: 768px) {  
         width: 155px;
         height: 147px;
-        margin-bottom: 28px;
+        margin: 0px 10px 28px;
     }
 
    
