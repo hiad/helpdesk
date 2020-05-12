@@ -15,6 +15,7 @@ const Container = styled.nav`
         margin-right: 65px;
         max-width: 939px;
         max-width: ${({ isSearching }) => (isSearching && '100%')};
+        margin:  ${({ isSearching }) => (isSearching && '50px auto')};
     }
 `;
 
