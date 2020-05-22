@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import searchIcon from '../../images/searchIcon.svg';
 
 const Input = styled.input`
-    width: 100%;
-    max-width: 285px;
-    margin: 30px auto;
+    width: 285px;
     height: 39px;
     border: 1px solid #707070;
     background-color: #ffffff;
@@ -20,6 +18,7 @@ const Input = styled.input`
     }
 
     @media (min-width: 768px) {
+        background-color: #ffffff;
         max-width: 347px;
     }
 `;

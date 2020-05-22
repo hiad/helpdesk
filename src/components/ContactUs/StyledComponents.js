@@ -15,10 +15,11 @@ const Container = styled.div`
     }
 `;
 
-const InformationField = styled.div`
+const InformationField = styled.a`
     align-items: center;
     margin: 0 30px;
     display: flex;
+    text-decoration: none;
 `;
 
 const ImageIcon = styled.img`

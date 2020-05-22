@@ -15,6 +15,82 @@ const Image = styled.img`
     margin: 0 auto;
 `;
 
+const ContainerSpacing = styled.div`
+    padding: 0 20px;
+    margin: 0 auto;
+    @media (min-width: 640px){
+        display: flex;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        position: relative;
+        padding: 10px 6px;
+        flex: 1 0 0px;
+        margin: 0;
+    }
+`;
+
+
+const InputContainer = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    flex-grow: 1;
+    padding: 10px 6px;
+`;
+
+const SuscribeContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 6px 10px;
+    justify-content: center;
+    @media (min-width: 640px){
+        flex-direction: row;
+    }
+`;
+
+const Input = styled.input`
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 38px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-family: 'sharp_sans';
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    border-color: rgb(208, 51, 31);
+    height: 50px !important;
+    border-radius: 0 !important;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-direction: column;
+    align-self: flex-end;
+`;
+
+const Button = styled.button`
+    color: rgb(255, 255, 255);
+    height: 50px !important;
+    border-radius: 100px !important;
+    padding: 0 !important;
+    background-color: #3b3b3b !important;
+    width: 160px !important;
+    text-transform: uppercase !important;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    cursor: pointer;
+    background: rgb(48, 59, 67);
+    border-color: rgb(0, 0, 0);
+`;
 
 const InnerContainer = styled.div`
     background: black;
@@ -102,7 +178,7 @@ const LogoContainer = styled.div`
     text-align: center;
     width: 100%;
     @media (min-width: 1024px) {
-        width: 33%;
+        width: 33.33%;
     }
 `;
 
@@ -113,6 +189,8 @@ const H4 = styled.h4`
     text-decoration: underline;
     color: white;
     text-transform: uppercase;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     @media (min-width: 1024px) {
         margin-bottom: 0.5rem;
     }
@@ -130,6 +208,17 @@ const ContainerMenu = styled.div`
         align-items: flex-start;
         width: 66.7%;
     }
+`;
+
+const SVG = styled.svg`
+    display: inline;
+    width: 16px;
+    margin-left: 10px;
+    display: none;
+     @media (min-width: 768px) {
+        display: none;
+     }
+}
 `;
 
 const InnerMenu = styled.div`
@@ -167,7 +256,13 @@ const Footer = () => {
                 <Wrapper>
                     <ContainerMenu>
                         <InnerMenu>
-                            <H4 onClick={() => handleClick('shop')}>Shop</H4>
+                            <H4 onClick={() => handleClick('shop')}>
+                                Shop
+                                <SVG height="30" viewBox="0 0 512 512" width="30" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="white" d="M396.6 160l19.4 20.7L256 352 96 180.7l19.3-20.7L256 310.5z" />
+                                </SVG>
+                            </H4>
+
                             {(!breakpoints.md || isActiveShop) && (
                                 <UL className="uppercase ">
                                     <LI>
@@ -298,6 +393,14 @@ const Footer = () => {
                             Keep the buzz going with our newsletter to get the
                             inside scoop on new products, discounts, drink recipes and more.
                         </FollowText>
+                        <SuscribeContainer>
+                            <InputContainer>
+                                <Input type="email" name="email" tabIndex="0" placeholder="Enter your email" />
+                            </InputContainer>
+                            <ContainerSpacing>
+                                <Button type="button" tabIndex="0">Subscribe</Button>
+                            </ContainerSpacing>
+                        </SuscribeContainer>
                     </LogoContainer>
                 </Wrapper>
 

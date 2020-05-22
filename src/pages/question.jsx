@@ -6,7 +6,6 @@ import Layout from '../components/Layout/Layout';
 import BaseQuestionList from '../components/QuestionList/QuestionList';
 import CategoriesList from '../components/CategoriesList/CategoriesList';
 import BaseCategoriesMobile from '../components/CategoriesList/CategoriesMobile';
-import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
 import BaseChatBox from '../components/ChatBox/ChatBox';
 
 
@@ -19,10 +18,6 @@ const CategoriesMobile = styled(BaseCategoriesMobile)`
     margin-bottom: 28px;
 `;
 
-
-const SearchContainer = styled(BaseSearchContainer)`
-    margin-top: 28px;
-`;
 
 const ChatBox = styled(BaseChatBox)`
     margin-top: 28px;
@@ -152,7 +147,6 @@ const Question = ({ location }) => {
                             <CategoriesList categories={newCategoriesData} />
                         </>
                     )}
-                    {data && <SearchContainer questions={data.allContentfulQuestions.nodes} />}
                     <ChatBox />
                 </Column>
                 <Column>

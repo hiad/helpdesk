@@ -7,7 +7,6 @@ import BaseQuestionList from '../components/QuestionList/QuestionList';
 import BaseProducts from '../components/Products/Products';
 import BaseCategoriesList from '../components/CategoriesList/CategoriesList';
 import BaseCategoriesMobile from '../components/CategoriesList/CategoriesMobile';
-import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
 import BaseChatBox from '../components/ChatBox/ChatBox';
 
 
@@ -25,11 +24,6 @@ const Products = styled(BaseProducts)`
 
 const CategoriesList = styled(BaseCategoriesList)`
     margin-bottom: 28px;
-`;
-
-
-const SearchContainer = styled(BaseSearchContainer)`
-    margin-top: 28px;
 `;
 
 const ChatBox = styled(BaseChatBox)`
@@ -169,7 +163,6 @@ const ProductInner = ({ location }) => {
                             <CategoriesList categories={newCategoriesData} />
                         </>
                     )}
-                    {data && <SearchContainer questions={data.allContentfulQuestions.nodes} />}
                     <ChatBox />
                 </Column>
                 <Column>

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/Layout/Layout';
 import RectangleMenu from '../components/RectangleMenu/RectangleMenu';
 import QuestionList from '../components/QuestionList/QuestionList';
 import ContactUs from '../components/ContactUs/ContactUs';
-import SearchBox from '../components/SearchBox/SearchBox';
 
 
 const Container = styled.div`
@@ -70,7 +69,6 @@ const H2 = styled.h2`
 
 
 const IndexPage = () => {
-    const [questionList, setQuestionsList] = useState([]);
     const data = useStaticQuery(graphql`{
             allContentfulQuestionType {
               edges {
@@ -97,20 +95,6 @@ const IndexPage = () => {
                 }
               }
             }
-            allContentfulQuestions {
-              nodes {
-                answer {
-                  answer
-                }
-                question {
-                  question
-                  id
-                }
-                typeQuestion {
-                  title
-                }
-              }
-            }
           }                  
       `);
 
@@ -118,14 +102,6 @@ const IndexPage = () => {
       && data.allContentfulQuestionType.edges[3].node;
     return (
         <Layout>
-            <Container>
-                {data && <SearchBox setQuestionsList={setQuestionsList} questions={data.allContentfulQuestions.nodes} />}
-            </Container>
-            <Container>
-                {questionList && (
-                    <QuestionList isSearching questions={questionList} />
-                )}
-            </Container>
             <Container>
                 {data.allContentfulQuestionType.edges.map(({
                     node,

@@ -15,23 +15,28 @@ import {
 const infoContact = [
     {
         icon: locationIcon,
-        text: '1234 Street, City United States  Postal Box 45677',
+        text: '201 NW 22ND AVE, FORT LAUDERDALE, FL 33311',
+        url: 'https://goo.gl/maps/HALdwB7seSoXR7Cg9',
     },
     {
         icon: contactIcon,
-        text: 'support@something.com',
+        text: 'sales@brumate.com',
+        url: 'mailto:SALES@BRUMATE.COM?Subject=BrumateDesk',
     },
     {
         icon: messengerIcon,
         text: 'Chat with us',
+        url: 'mailto:SALES@BRUMATE.COM?Subject=BrumateDesk',
     },
     {
         icon: facebookIcon,
-        text: 'facebook.com/test',
+        text: 'Facebook',
+        url: 'https://www.facebook.com/MyBruMate/',
     },
     {
         icon: instagramIcon,
-        text: 'instagram.com/test',
+        text: 'Instagram',
+        url: 'https://www.instagram.com/bru.mate/',
     },
 ];
 
@@ -41,8 +46,8 @@ const ContactUs = ({
     <Container className={className}>
         <>
             {infoContact.map(
-                ({ icon, text }) => (
-                    <InformationField>
+                ({ icon, text, url }) => (
+                    <InformationField href={url} target="_blank">
                         <ImageIcon src={icon} alt="arrow" />
                         <P>{text}</P>
                     </InformationField>

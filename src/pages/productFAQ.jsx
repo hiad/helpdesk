@@ -5,7 +5,6 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Layout from '../components/Layout/Layout';
 import CategoriesList from '../components/CategoriesList/CategoriesList';
 import BaseCategoriesMobile from '../components/CategoriesList/CategoriesMobile';
-import { SearchContainer as BaseSearchContainer } from '../components/SearchBox/SearchBox';
 import BaseChatBox from '../components/ChatBox/ChatBox';
 import BaseProductList from '../components/ProductList/ProductList';
 
@@ -15,11 +14,6 @@ const ProductList = styled(BaseProductList)`
 
 const CategoriesMobile = styled(BaseCategoriesMobile)`
     margin-bottom: 28px;
-`;
-
-
-const SearchContainer = styled(BaseSearchContainer)`
-    margin-top: 28px;
 `;
 
 const ChatBox = styled(BaseChatBox)`
@@ -136,7 +130,6 @@ const ProductFQA = () => {
                             <CategoriesList categories={newCategoriesData} />
                         </>
                     )}
-                    {data && <SearchContainer questions={data.allContentfulQuestions.nodes} />}
                     <ChatBox />
                 </Column>
                 <Column>
