@@ -39,6 +39,7 @@ module.exports = {
             options: {
                 spaceId: 'b1jnxgqy6w4b',
                 accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+                host: process.env.CONTENTFUL_HOST || 'cdn.contentful.com',
             },
         },
 
